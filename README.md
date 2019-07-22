@@ -83,17 +83,17 @@ See also 80 HTTP
 #### 9200 ElasticSearch
 List available indecies:
 ```
-<TARGET_MACHINE>:9200/_cat/indecies?pretty=true
+{{TARGET_MACHINE}}:9200/_cat/indecies?pretty=true
 ```
 See also [ELK Stack][4]
 
 Search an index:
 ```
-<TARGET_MACHINE>:9200/<INDEX>/_search?q=*<QUERY_STRING>*&size=<#>&pretty=true
+{{TARGET_MACHINE}}:9200/{{INDEX}}/_search?q={{KEYWORD}}&size={{#}}&pretty=true
 ```
-* `<INDEX>`: The index to search
-* `<QUERY_STRING>`: Search all the docs with the query string
-* `<#>`: Number of results to show (default is 10)
+* `{{INDEX}}`: The index to search
+* `{{KEYWORD}}`: Search all the docs with the query string
+* `{{#}}`: Number of results to show (default is 10)
 
 #### 9600 Logstash
 By default, Logstash uses port `9600`, but if the port is taken it will use the next port (`9601`, etc.)
