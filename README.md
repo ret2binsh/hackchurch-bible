@@ -3,6 +3,11 @@
 Hack Church is a group dedicated to making a comprehensive penetration testing methodology available to everyone. If you would like to contribute, please submit a PR or report an Issue. 
 
 ## How to use this guide
+
+### OS
+This guide assumes you are using a pen-testing distro of linux. Many open-source distros exist and come with a common set of tools. 
+
+### CLI Input/Output
 The `preformatted text` refers to command line input/output. Some text `{{REPLACE_ME}}` (all caps, snake_cased, in between double curly braces), should be replaced with relevant info. Sometimes a command will have `# This is a comment` afterward to further provide context for a command. 
 
 ## Methodology
@@ -18,11 +23,11 @@ Organization is king. Before you even begin recon, organizing your local environ
 ### Directroy structure
 Here is a recommended directory structure to work out of:
 ```
- ~/                 # Your home directory
- └── EVENT/         # Name of the event
-     └── BOX/       # Name or IP of the box
-         ├── nmap   # Reports from nmap tool
-         ├── www    # Staging files to serve over http
+ ~/                           # Your home directory
+ └── {{EVENT}}/               # Name of the event
+     └── {{TARGET_MACHINE}}/  # Name or IP of the box
+         ├── nmap             # Reports from nmap tool
+         ├── www              # Staging files to serve over http
 ```
 
 ### Tools
@@ -40,9 +45,13 @@ nmap -SC -sV -oA nmap/{{FILENAME}} {{TARGET_MACHINE}}
 * `TARGET_MACHINE`: Target machine
 
 ## 2. Access
-Use the sections below for common ways to gain more info or access via the ports available.
+Use the sections below for common ways to gain more info or access via the available ports.
 
 #### 21 FTP
+With credentials:
+```
+ftp {{USERNAME}}@{{TARGET_MACHINE}} 
+```
 
 #### 22 SSH
 With credentials:
@@ -86,7 +95,7 @@ Search an index:
 * `<QUERY_STRING>`: Search all the docs with the query string
 * `<#>`: Number of results to show (default is 10)
 
-#### 960X Logstash
+#### 9600 Logstash
 By default, Logstash uses port `9600`, but if the port is taken it will use the next port (`9601`, etc.)
 See also [ELK Stack][4]
 
