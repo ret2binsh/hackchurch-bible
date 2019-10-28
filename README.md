@@ -59,9 +59,24 @@ With credentials:
 ssh {{USERNAME}}@{{TARGET_MACHINE}} 
 ```
 
-Loopback with crednetials:
+SSH Forward Tunnel with a Local Listener:
 ```
-ssh -L {{LOCAL_PORT}}:{{TARGET_MACHINE}}:{{REMOTE_PORT}} {{USERNAME}}@{{TARGET_MACHINE}}
+ssh -L {{LOCAL_PORT}}:{{TARGET_MACHINE2}}:{{REMOTE_PORT}} {{USERNAME}}@{{TARGET_MACHINE1}}
+```
+
+SSH Reverse Tunnel with a Remote Listener:
+```
+ssh -R {{REMOTE_PORT}}:127.0.0.1:{{LOCAL_PORT}} {{USERNAME}}@{{TARGET_MACHINE1}}
+```
+
+Two SSH Forward Tunnels with a Local Listener utilizing a single TCP connection to TARGET1:
+```
+ssh -L {{LOCAL_PORT1}}:{{TARGET_MACHINE2}}:{{REMOTE_PORT1}} -L {{LOCAL_PORT2}}:{{TARGET_MACHINE2}}:{{REMOTE_PORT2}} {{USERNAME}}@{{TARGET_MACHINE1}}
+```
+
+SSH Forward & Reverse Tunnels with Local & Reverse Listeners utilizing a single TCP connection to TARGET1:
+```
+ssh -L {{LOCAL_PORT1}}:{{TARGET_MACHINE2}}:{{REMOTE_PORT1}} -R {{REMOTE_PORT1}}:127.0.0.1:{{LOCAL_PORT}} {{USERNAME}}@{{TARGET_MACHINE1}}
 ```
 
 #### 80 HTTP
