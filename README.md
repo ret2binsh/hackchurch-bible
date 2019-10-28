@@ -147,7 +147,20 @@ locate '*.{{FILETYPE}}`
 
 ### Find files
 
-_Coming Soon_
+Find a file across the entire filesystem
+```
+find / -iname {{FILENAME}}
+```
+
+Find all SUID binaries across filesystem
+```
+find / -perm -4000
+```
+
+"Find" all files within a specific directory and GREP for a matching string
+```
+find /etc -type f -exec grep {{STRING}} {} +
+```
 
 ## 4. Cover
 Typically in CTF environments, you won't need to worry about covering your tracks.
