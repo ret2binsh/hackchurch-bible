@@ -93,6 +93,12 @@ ex. ssh -L 2000:target2:22 backdoor@target1
     ssh -L 2001:target3:22 -p2000 backdoor2@target2
 ```
 
+Add a Forward Tunnel while in an SSH session:
+```
+~C (must be a fresh new line so hit enter and try again if you don't drop into menu)
+-L {{LOCAL_PORT}}:{{TARGET_MACHINE2}}:{{REMOTE_PORT}}
+```
+
 #### 80 HTTP
 View the website in a browser: `http://{{TARGET_MACHINE}}`
 
